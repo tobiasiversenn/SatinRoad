@@ -1,7 +1,7 @@
 <h1>Satin Road</h1>
 This is a school project for a fictional marketplace called "SatinRoad".
 
-Sustainability:
+<h2>Sustainability:</h2>
 1. Chrome DevTools (Network Tab): Measure total payload transferred (MB),
    number of HTTP requests, and response times.
 Total payload transferred: 2,4 kB
