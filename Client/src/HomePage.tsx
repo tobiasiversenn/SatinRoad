@@ -13,7 +13,7 @@ export function HomePage(){
 
     return (
         <>
-        <h3>Feautered vendors who have sold more than 100 orders:</h3>
+        <h3>Featured vendors who have sold more than 100 orders:</h3>
             <div className="ProductsContainer">
 
                 {users.map((u) => (
