@@ -26,36 +26,47 @@ export function Inventory(){
     }, [])
     return (
         <>
-        <h1>My inventory</h1>
-        <h1>My drug products: </h1>
-
+        <h2>My inventory</h2>
+        <h3>My drug products: </h3>
+            <div className="ProductsContainer">
+            
             {drug.map((d) => (
                 <>
-                <h3>Drug name: {d.drugName}</h3>
-                    <h3>Drug price: {d.price}</h3>
-                    <br></br>
+                <div className="Products">
+
+                <h3>{d.drugName}</h3>
+                </div>
+
                 </>
             ))}
+            </div>
 
-                <h1>My stolen artifact products: </h1>
+                <h3>My stolen artifact products: </h3>
+            <div className="ProductsContainer">
             {stolenartifacts.map((sa) => (
                 <>
-                    <h3>Stolen artifact name: {sa.name}</h3>
-                    <h3>Stolen artifact price: {sa.price}</h3>
+                <div className="Products">
+
+                <h3>{sa.name}</h3>
                     <br></br>
+                </div>
 
                 </>
             ))}
+            </div>
             
-            <h1>My weaponry products: </h1>
+            <h3>My weaponry products: </h3>
+            <div className="ProductsContainer">
             {weaponry.map((w) => (
                 <>
-                <h3>Weaponry name: {w.name}</h3>
-                    <h3>Weaponry price: {w.price}</h3>
+                <div className="Products">
+                <h3>{w.name}</h3>
                     <br></br>
-
+                </div>
+                    
                 </>
             ))}
+            </div>
         </>
     )
 }

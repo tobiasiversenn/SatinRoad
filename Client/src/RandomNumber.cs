@@ -6,7 +6,11 @@ public class RandomNumber
 
     public bool isRandomNumber()
     {
-        return true;
+        if (random.Next(1, 100) == 1)
+        {
+            return true;
+        }
+        return false;
     }
     
 }

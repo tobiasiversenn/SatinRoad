@@ -14,22 +14,39 @@ export function AddStolenArtifact(){
 
 
     return(
-        <>
-            <input placeholder="Stolen artifact name" value={stolenArtifactName} onChange={(e)=> setStolenArtifactName(e.target.value)}/>
-            <input placeholder="Stolen artifact price" value={stolenArtifactPrice} onChange={e => setStolenArtifactPrice(e.target.value)}/>
+        <div className="AddPageDiv">
 
+        <>
+            <h1>Add a stolen artifact</h1>
+            <hr/>
+            <br/>
+            <label>Stolen artifact name</label>
+            <br/>
+            <input className="inputFieldOnAddPage" value={stolenArtifactName} onChange={(e)=> setStolenArtifactName(e.target.value)}/>
+            <br/>
+            <br/>
+            <label>Price</label>
+            <br/>
+            <input className="inputFieldOnAddPage" value={stolenArtifactPrice} onChange={e => setStolenArtifactPrice(e.target.value)}/>
+            <br/>
+            <br/>
             <br></br>
-            <button onClick={() => api.postStolenArtifact.stolenArtifactQueriesPostStolenArtifact({
+            <button className="btnAdd" onClick={() => api.postStolenArtifact.stolenArtifactQueriesPostStolenArtifact({
                 name: stolenArtifactName,
                 price: Number(stolenArtifactPrice),
                 sellerId: sellerId,
                 sellerName: sellerName,
                 isListed: true
                 
-            })}>Add stolen artifact</button>
+            })
+                .then(() => {
+                    setStolenArtifactName("");
+                    setStolenArtifactPrice("");
+                })}>Add stolen artifact</button>
 
 
         </>
+        </div>
     )
 }
             

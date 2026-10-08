@@ -12,14 +12,15 @@ public class FBIQueries (MyDatabaseConnection db) : ControllerBase
         try
         {
             var vendor = db.Users().FirstOrDefault(u => u.Id == sellerId);
-            var InventoryProducts = db.Drugs().Where(d => d.sellerId == sellerId).ToList();
-            db.Delete(InventoryProducts);
+            var InventoryProducts = db.Drugs().Where(d => d.sellerId == sellerId)
+                .Delete();
 
-            var StolenArtifactProducts = db.StolenArtifacts().Where(sa => sa.sellerId == sellerId).ToList();
-            db.Delete(StolenArtifactProducts);
 
-            var WeaponryProducts = db.Weaponry().Where(w => w.sellerId == sellerId).ToList();
-            db.Delete(WeaponryProducts);
+            var StolenArtifactProducts = db.StolenArtifacts().Where(sa => sa.sellerId == sellerId)
+                .Delete();
+
+            var WeaponryProducts = db.Weaponry().Where(w => w.sellerId == sellerId)
+                .Delete();
 
             db.Delete(vendor);
 

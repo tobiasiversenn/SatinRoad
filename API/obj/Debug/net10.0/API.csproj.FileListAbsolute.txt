@@ -84,3 +84,4 @@ C:\Users\Bruger\OneDrive\Skrivebord\SatinRoad\API\bin\Debug\net10.0\tsconfig.jso
 C:\Users\Bruger\OneDrive\Skrivebord\SatinRoad\API\bin\Debug\net10.0\Client.exe
 C:\Users\Bruger\OneDrive\Skrivebord\SatinRoad\API\bin\Debug\net10.0\Client.dll
 C:\Users\Bruger\OneDrive\Skrivebord\SatinRoad\API\bin\Debug\net10.0\Client.pdb
+C:\Users\Bruger\OneDrive\Skrivebord\SatinRoad\API\obj\Debug\net10.0\API.sourcelink.json

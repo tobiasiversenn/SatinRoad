@@ -10,5 +10,8 @@ public class MyDatabaseConnection(DataOptions<MyDatabaseConnection> dataopts) : 
     public ITable<StolenArtifact> StolenArtifacts() => this.GetTable<StolenArtifact>();
     public ITable<User> Users() => this.GetTable<User>();
     public ITable<Weaponry> Weaponry() => this.GetTable<Weaponry>();
+    public ITable<Category> Categories() => this.GetTable<Category>();
+    
+    public ITable<Order> Orders() => this.GetTable<Order>();
 
 }

@@ -10,6 +10,11 @@
  * ---------------------------------------------------------------
  */
 
+export interface Category {
+  id?: string;
+  categoryName?: string;
+}
+
 export interface Drug {
   id?: string;
   drugName?: string;
@@ -40,6 +45,26 @@ export interface StolenArtifact {
   isListed?: boolean;
 }
 
+export interface User {
+  id?: string;
+  username?: string;
+  password?: string;
+  isAdmin?: boolean;
+}
+
+export interface CategoryQueriesPostCategoryParams {
+  Id?: string;
+  categoryName?: string;
+}
+
+export interface CategoryQueriesDeleteCategoryParams {
+  categoryId?: string;
+}
+
+export interface CategoryQueriesGetCategoryNameParams {
+  categoryId?: string;
+}
+
 export interface DrugControllerQueriesPostDrugParams {
   Id?: string;
   drugName?: string;
@@ -68,6 +93,17 @@ export interface InventoryQueriesAddWeaponryToInventoryParams {
 
 export interface InventoryQueriesAddStolenArtifactToInventoryParams {
   stolenArtifactId?: string;
+}
+
+export interface OrderQueriesCreateNewOrderParams {
+  Id?: string;
+  vendorId?: string;
+  buyerId?: string;
+}
+
+export interface OrderQueriesShouldThereBe20PercentDiscountParams {
+  buyerId?: string;
+  vendorId?: string;
 }
 
 export interface StolenArtifactQueriesPostStolenArtifactParams {
@@ -361,6 +397,80 @@ export class HttpClient<SecurityDataType = unknown> {
 export class Api<
   SecurityDataType extends unknown,
 > extends HttpClient<SecurityDataType> {
+  getAllCategories = {
+    /**
+     * No description
+     *
+     * @tags CategoryQueries
+     * @name CategoryQueriesGetAllCategories
+     * @request GET:/GetAllCategories
+     */
+    categoryQueriesGetAllCategories: (params: RequestParams = {}) =>
+      this.request<Category[], any>({
+        path: `/GetAllCategories`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+  };
+  postCategory = {
+    /**
+     * No description
+     *
+     * @tags CategoryQueries
+     * @name CategoryQueriesPostCategory
+     * @request POST:/PostCategory
+     */
+    categoryQueriesPostCategory: (
+      query: CategoryQueriesPostCategoryParams = {},
+      params: RequestParams = {},
+    ) =>
+      this.request<void, any>({
+        path: `/PostCategory`,
+        method: "POST",
+        query: query,
+        ...params,
+      }),
+  };
+  deleteCategory = {
+    /**
+     * No description
+     *
+     * @tags CategoryQueries
+     * @name CategoryQueriesDeleteCategory
+     * @request DELETE:/DeleteCategory
+     */
+    categoryQueriesDeleteCategory: (
+      query: CategoryQueriesDeleteCategoryParams = {},
+      params: RequestParams = {},
+    ) =>
+      this.request<void, any>({
+        path: `/DeleteCategory`,
+        method: "DELETE",
+        query: query,
+        ...params,
+      }),
+  };
+  getCategoryName = {
+    /**
+     * No description
+     *
+     * @tags CategoryQueries
+     * @name CategoryQueriesGetCategoryName
+     * @request GET:/GetCategoryName
+     */
+    categoryQueriesGetCategoryName: (
+      query: CategoryQueriesGetCategoryNameParams = {},
+      params: RequestParams = {},
+    ) =>
+      this.request<string, any>({
+        path: `/GetCategoryName`,
+        method: "GET",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+  };
   getAllMyDrugs = {
     /**
      * No description
@@ -539,6 +649,61 @@ export class Api<
       this.request<string, any>({
         path: `/addStolenArtifactToInventory`,
         method: "POST",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+  };
+  createNewOrder = {
+    /**
+     * No description
+     *
+     * @tags OrderQueries
+     * @name OrderQueriesCreateNewOrder
+     * @request POST:/CreateNewOrder
+     */
+    orderQueriesCreateNewOrder: (
+      query: OrderQueriesCreateNewOrderParams = {},
+      params: RequestParams = {},
+    ) =>
+      this.request<void, any>({
+        path: `/CreateNewOrder`,
+        method: "POST",
+        query: query,
+        ...params,
+      }),
+  };
+  getUsersWithMoreThan100Orders = {
+    /**
+     * No description
+     *
+     * @tags OrderQueries
+     * @name OrderQueriesGetUsersWithMoreThan100Orders
+     * @request GET:/GetUsersWithMoreThan100Orders
+     */
+    orderQueriesGetUsersWithMoreThan100Orders: (params: RequestParams = {}) =>
+      this.request<User[], any>({
+        path: `/GetUsersWithMoreThan100Orders`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+  };
+  shouldThereBe20PercentDiscount = {
+    /**
+     * No description
+     *
+     * @tags OrderQueries
+     * @name OrderQueriesShouldThereBe20PercentDiscount
+     * @request GET:/ShouldThereBe20PercentDiscount
+     */
+    orderQueriesShouldThereBe20PercentDiscount: (
+      query: OrderQueriesShouldThereBe20PercentDiscountParams = {},
+      params: RequestParams = {},
+    ) =>
+      this.request<boolean, any>({
+        path: `/ShouldThereBe20PercentDiscount`,
+        method: "GET",
         query: query,
         format: "json",
         ...params,

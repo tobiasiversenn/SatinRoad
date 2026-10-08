@@ -6,6 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>dotnet-SatinRoad-18872202-c97e-44d5-bea5-feefc680f6aa</UserSecretsId>
         <RootNamespace>SatinRoad</RootNamespace>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>

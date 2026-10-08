@@ -24,6 +24,8 @@ using (var scope = app.Services.CreateScope())
    db.CreateTable<StolenArtifact>(tableOptions: TableOptions.CreateIfNotExists);
      db.CreateTable<User>(tableOptions: TableOptions.CreateIfNotExists);
     db.CreateTable<Weaponry>(tableOptions: TableOptions.CreateIfNotExists);
+    db.CreateTable<Category>(tableOptions:  TableOptions.CreateIfNotExists);
+    db.CreateTable<Order>(tableOptions: TableOptions.CreateIfNotExists);
 
     if (!db.Drugs().Any())
     {
@@ -43,7 +45,17 @@ using (var scope = app.Services.CreateScope())
             Id = Guid.NewGuid().ToString(),
             drugName = "Alkohol",
             price = 30,
-            sellerName = "Sebastian",
+            sellerName = "Dylan",
+            sellerId = "lsfksadfs",
+            isListed = true
+
+        });
+        db.Insert(new Drug()
+        {
+            Id = Guid.NewGuid().ToString(),
+            drugName = "Paracatemol",
+            price = 30,
+            sellerName = "Dylan",
             sellerId = "lsfksadfs",
             isListed = true
 
@@ -65,6 +77,26 @@ using (var scope = app.Services.CreateScope())
             Id = Guid.NewGuid().ToString(),
             name = "Ancient statue",
             price = 7000,
+            sellerId = "sdkalfs",
+            sellerName = "Anders",
+            isListed = true
+
+        });
+        db.Insert(new StolenArtifact()
+        {
+            Id = Guid.NewGuid().ToString(),
+            name = "Old building",
+            price = 4920,
+            sellerId = "sdkalfs",
+            sellerName = "Anders",
+            isListed = true
+
+        });
+        db.Insert(new StolenArtifact()
+        {
+            Id = Guid.NewGuid().ToString(),
+            name = "Ancient coin",
+            price = 3482,
             sellerId = "sdkalfs",
             sellerName = "Anders",
             isListed = true
@@ -94,6 +126,63 @@ using (var scope = app.Services.CreateScope())
 
 
         });
+        db.Insert(new Weaponry()
+        {
+            Id = Guid.NewGuid().ToString(),
+            name = "Handgun",
+            price = 6000,
+            sellerId = "skfkdsfs",
+            sellerName = "James",
+            isListed = true
+
+
+        });
+        db.Insert(new Weaponry()
+        {
+            Id = Guid.NewGuid().ToString(),
+            name = "Shotgun",
+            price = 5000,
+            sellerId = "skfkdsfs",
+            sellerName = "James",
+            isListed = true
+        });
+        db.Insert(new Weaponry()
+        {
+            Id = Guid.NewGuid().ToString(),
+            name = "Bow",
+            price = 8000,
+            sellerId = "skfkdsfs",
+            sellerName = "James",
+            isListed = true
+
+
+        });
+        db.Insert(new Category()
+        {
+            Id = Guid.NewGuid().ToString(),
+            categoryName = "Drugs"
+        });
+        
+        db.Insert(new Category()
+        {
+            Id = Guid.NewGuid().ToString(),
+            categoryName = "Stolen Artifacts"
+        });
+        
+        db.Insert(new Category()
+        {
+            Id = Guid.NewGuid().ToString(),
+            categoryName = "Weaponry"
+        });
+
+        db.Insert(new User()
+        {
+            Id = "7f3a9c21-6d84-4b17-a2e9-5c8d1f430b76",
+            isAdmin = true,
+            password = "",
+            username = "James"
+        });
+
     }
     
 

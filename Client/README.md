@@ -1,21 +1,15 @@
-# bun-react-template
+Sustainability:
+1. Chrome DevTools (Network Tab): Measure total payload transferred (MB),
+   number of HTTP requests, and response times.
+Total payload transferred: 2,4 kB
+Number of HTTP requests: 1 on the main login page. When you go to some of the other pages on the website, the API 
+makes a few requests when visiting that sub-page in order to fetch information. 
+Response times: The website responds fast
 
-To install dependencies:
 
-```bash
-bun install
-```
 
-To start a development server:
-
-```bash
-bun dev
-```
-
-To run for production:
-
-```bash
-bun start
-```
-
-This project was created using `bun init` in bun v1.3.14. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+2. Chrome DevTools (Lighthouse Tab): Audit performance scores, DOM size, and
+   client-side rendering bottlenecks.
+Perfomance: 85
+DOMContentLoaded: 301ms
+Client-side rendering bottlenecks. There doesn't seem to be client-side rendering bottlenecks.

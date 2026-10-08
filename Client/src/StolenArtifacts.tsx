@@ -7,6 +7,9 @@ export function StolenArtifacts(){
     const [stolenartifact, setStolenArtifacts] = useState<StolenArtifact[]>([])
     const [fbiStolenartifactId, setFbiStolenArtifactId] = useState<string>()
 
+    const [fbiWarning, setFbiWarning] = useState<boolean>(false)
+
+
     useEffect(() => {
         api.getAllMyStolenArtifacts.stolenArtifactQueriesGetAllMyStolenArtifacts()
             .then(r => {
@@ -16,31 +19,49 @@ export function StolenArtifacts(){
     return (
         <>
             <h1>All Stolen Artifacts</h1>
+            {fbiWarning == true && <h1 style={{color: 'red'}}>WARNING! The buyer is the FBI! The seller and their products have been removed</h1>}
+
+            <div className="ProductsContainer">
             {stolenartifact.map((sa) => (
                 <>
-                    <h3>Stolen artifact name: {sa.name}</h3>
-                    <h3>Stolen artifact price: {sa.price}</h3>
-                    <h3>Seller Name: {sa.sellerName}</h3>
-                    <button onClick={() => 
+                <div className="Products">
+
+                <h3>{sa.name}</h3>
+                    <h3>{sa.price}$</h3>
+                    <h3>Seller: {sa.sellerName}</h3>
+                    <button className="btnAdd" onClick={() => 
                     api.addStolenArtifactToInventory.inventoryQueriesAddStolenArtifactToInventory({
                         stolenArtifactId: sa.id
-                    }).then((result) => {
+                    })
+                        
+                        .then((result) => {
+                            setStolenArtifacts(currentStolenArtifacts => currentStolenArtifacts.filter(StolenArtifact => StolenArtifact.id != sa.id));
+
+                            api.createNewOrder.orderQueriesCreateNewOrder({
+                                buyerId: "James",
+                                vendorId: sa.sellerName
+                            })
                         if (result == "FBI"){
-                            setFbiStolenArtifactId(sa.id)
+                            setFbiWarning(true);
+
                             api.deleteVendorAndVendorProducts.fbiQueriesDeleteVendorAndVendorProducts({
                                 sellerId: sa.sellerId
                             })
+                            setTimeout(() => {
+                                setFbiWarning(false)
+                            }, 20000)
                         }
                     })}
                     >Buy stolen artifact</button>
-                    {fbiStolenartifactId == sa.id && <h1 style={{color: 'red'}}>WARNING! The buyer is the FBI! The seller and their products have been removed</h1>}
 
                     <br/>
                     <br/>
                     <br/>
-                </>
+                </div>
+
+                    </>
             ))}
-
+            </div>
         </>
     )
 }

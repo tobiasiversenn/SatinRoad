@@ -17,7 +17,6 @@ public class InventoryQueries (MyDatabaseConnection db) : ControllerBase
     public List<Drug> getDrugsInInventory()
     {
         return db.Drugs().Where(d => d.isListed == false).ToList();
-        //Senere kan logik tilføjes med at det skal hentes for en bestemt bruger, men lige nu er der kun 1 bruger i systemet
     }
     
     [HttpPost(nameof(addDrugToInventory))]

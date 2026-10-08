@@ -1,0 +1,37 @@
+﻿services:
+  api:
+    image: api
+    build:
+      context: .
+      dockerfile: API/Dockerfile
+
+  client:
+    image: client
+    build:
+      context: .
+      dockerfile: Client/Dockerfile
+
+  infrastructure:
+    image: infrastructure
+    build:
+      context: .
+      dockerfile: Infrastructure/Dockerfile
+
+  unittest:
+    image: unittest
+    build:
+      context: .
+      dockerfile: UnitTest/Dockerfile
+
+  api-1:
+    image: api-1
+    build:
+      context: .
+      dockerfile: API/Dockerfile
+
+  client-1:
+    image: client-1
+    build:
+      context: .
+      dockerfile: Client/Dockerfile
+
